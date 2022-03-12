@@ -2,6 +2,8 @@
 
 #include "Result.h"
 
+#include <iostream>
+
 int AbstractAlgorithm::getStartingNodes(int startingNode)
 {
 	distance maxDistance = 0;
@@ -25,13 +27,13 @@ void AbstractAlgorithm::addBestNodeToCycle(int cycle)
 {
 	distance minCost = std::numeric_limits<distance>::max();
 	int bestNode = -1;
-	std::list<int>::iterator positionInCycle;
+	std::forward_list<int>::iterator positionInCycle = _result->cycle[cycle].before_begin();
 
 	for (auto i : _free_nodes)
 	{
-		std::pair <distance, std::list<int>::iterator> temp = calculateCostToCycle(i, cycle);
+		auto temp = calculateCostToCycle(i, cycle);
 
-		if (temp.first < minCost)
+		if (temp.first <= minCost)
 		{
 			minCost = temp.first;
 			positionInCycle = temp.second;
@@ -42,34 +44,15 @@ void AbstractAlgorithm::addBestNodeToCycle(int cycle)
 	addToCycle(bestNode, cycle, positionInCycle);
 }
 
-std::pair <distance, std::list<int>::iterator> AbstractAlgorithm::calculateCostToCycle(int node, int cycle)
-{
-	distance minCost = std::numeric_limits<distance>::max();
-	std::list<int>::iterator positionInCycle;
-
-	for (std::list<int>::iterator it = _result->cycle[cycle].begin(); it != _result->cycle[cycle].end(); ++it)
-	{
-		distance temp = calculateCost(node, it);
-
-		if (temp < minCost)
-		{
-			minCost = temp;
-			positionInCycle = it;
-		}
-	}
-
-	return std::pair <distance, std::list<int>::iterator>(minCost, positionInCycle);
-}
-
 void AbstractAlgorithm::addToCycle(int node, int cycle)
 {
-	addToCycle(node, cycle, _result->cycle[cycle].begin());
+	addToCycle(node, cycle, _result->cycle[cycle].before_begin());
 }
 
-void AbstractAlgorithm::addToCycle(int node, int cycle, std::list<int>::iterator pos)
+void AbstractAlgorithm::addToCycle(int node, int cycle, std::forward_list<int>::iterator pos)
 {
 	_free_nodes.remove(node);
-	_result->cycle[cycle].insert(pos, node);
+	_result->cycle[cycle].insert_after(pos, node);
 }
 
 void AbstractAlgorithm::initCalculations(int startingNode)
@@ -78,7 +61,7 @@ void AbstractAlgorithm::initCalculations(int startingNode)
 
 	for (int i = 0; i < _graph->getSize(); ++i)
 	{
-		_free_nodes.push_back(i);
+		_free_nodes.push_front(i);
 	}
 
 	addToCycle(startingNode, 0);

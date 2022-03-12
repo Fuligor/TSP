@@ -1,3 +1,4 @@
+#include <limits>
 #include <iostream>
 
 #include "Graph.h"
@@ -5,6 +6,52 @@
 #include "TSPLoader.h"
 
 #include "NearestNeighbor.h"
+#include "GreedyCycle.h"
+#include "RegretHeuristics.h"
+
+void testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <AbstractAlgorithm> algorithm)
+{
+	algorithm->setGraph(graph);
+
+	distance min = std::numeric_limits<distance>::max();
+	std::shared_ptr <Result> minCycle;
+	distance max = 0;
+	double avg = 0.0;
+
+	for (int i = 0; i < 100; ++i)
+	{
+		algorithm->calculate(i);
+
+		auto result = algorithm->getResult();
+
+		distance length = result->getLength(graph);
+		if(length < min)
+		{
+			min = length;
+			minCycle = result;
+		}
+		if(length > max)
+		{
+			max = length;
+		}
+
+		avg = avg * i / (i + 1.0) + length / (i + 1.0);
+	}
+
+	for (int j = 0; j < 2; j++)
+	{
+		std::cout << j << ": ";
+
+		for (auto k : minCycle->cycle[j])
+		{
+			std::cout << k << ", ";
+		}
+
+		std::cout << std::endl;
+	}
+
+	std::cout << algorithm->getName() << ": " << avg << "(" << min << " - " << max << ")" << std::endl;
+}
 
 int main() {
 	std::shared_ptr<AbstractLoader> loader = std::make_shared<TSPLoader>();
@@ -21,23 +68,9 @@ int main() {
 		std::cout << std::endl;
 	}
 
-	std::shared_ptr <AbstractAlgorithm> algorithm = std::make_shared<NearestNeighbor>();
-
-	algorithm->setGraph(graph);
-
-	algorithm->calculate(0);
-
-	auto result = algorithm->getResult();
-
-	for(int j = 0; j < 2; j++) {
-		std::cout << j << ": ";
-
-		for(auto k: result->cycle[j]) {
-			std::cout << k << ", ";
-		}
-
-		std::cout << std::endl;
-	}
+	testAlgorithm(graph, std::make_shared<NearestNeighbor>());
+	testAlgorithm(graph, std::make_shared<GreedyCycle>());
+	testAlgorithm(graph, std::make_shared<RegretHeuristics>());
 
 	// for(int i = 0; i < graph->getSize(); ++i)
 }

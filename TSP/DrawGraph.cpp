@@ -1,3 +1,5 @@
+#ifndef _DEBUG
+
 #include "DrawGraph.h"
 
 #include <SFML/Graphics.hpp>
@@ -37,3 +39,5 @@ void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result)
     }
    
 }
+
+#endif // !_DEBUG

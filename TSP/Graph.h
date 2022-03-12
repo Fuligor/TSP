@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-typedef unsigned long long distance;
+typedef long long distance;
 
 class Graph
 {

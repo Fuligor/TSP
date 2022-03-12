@@ -1,11 +1,27 @@
 #include "NearestNeighbor.h"
 
-std::string NearestNeighbor::getName()
+#include "Result.h"
+
+std::pair<distance, std::forward_list<int>::iterator> NearestNeighbor::calculateCostToCycle(int node, int cycle)
 {
-    return "Nearest Neighbor";
+	distance minCost = std::numeric_limits<distance>::max();
+	std::forward_list<int>::iterator positionInCycle;
+
+	for (auto it = _result->cycle[cycle].begin(); it != _result->cycle[cycle].end(); ++it)
+	{
+		distance temp = (*_graph.get())[node][*it];
+
+		if (temp < minCost)
+		{
+			minCost = temp;
+			positionInCycle = it;
+		}
+	}
+
+	return std::pair <distance, std::forward_list<int>::iterator>(minCost, positionInCycle);
 }
 
-distance NearestNeighbor::calculateCost(int nodeA, std::list<int>::iterator nodeB)
+std::string NearestNeighbor::getName()
 {
-    return (*_graph.get())[nodeA][*nodeB];
+	return "Nearest Neighbor";
 }
