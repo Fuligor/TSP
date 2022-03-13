@@ -36,7 +36,7 @@ void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result, 
                     sf::Vertex(sf::Vector2f(locations[last].first + padding, locations[last].second + padding), sf::Color::Black),
                     sf::Vertex(sf::Vector2f(locations[j].first + padding, locations[j].second + padding), sf::Color::Black)
                 };
-
+                
                 window.draw(line, 2, sf::Lines);
             }
             last = j;
@@ -54,7 +54,7 @@ void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result, 
     sf::Texture texture;
     texture.create(window.getSize().x, window.getSize().y);
     texture.update(window);
-    std::string name = filename + "_" + algorithmName + ".png";
+    std::string name = "Results/" + filename + "_" + algorithmName + ".png";
     if (texture.copyToImage().saveToFile(name))
     {
         std::cout << "screenshot saved to " << name << std::endl;

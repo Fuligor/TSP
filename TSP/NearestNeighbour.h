@@ -1,7 +1,7 @@
 #pragma once
 #include "AbstractAlgorithm.h"
 
-class NearestNeighbor:
+class NearestNeighbour:
     public AbstractAlgorithm
 {
     // Odziedziczono za poœrednictwem elementu AbstractAlgorithm

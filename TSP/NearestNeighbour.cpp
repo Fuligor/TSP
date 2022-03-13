@@ -1,8 +1,8 @@
-#include "NearestNeighbor.h"
+#include "NearestNeighbour.h"
 
 #include "Result.h"
 
-std::pair<distance, std::forward_list<int>::iterator> NearestNeighbor::calculateCostToCycle(int node, int cycle)
+std::pair<distance, std::forward_list<int>::iterator> NearestNeighbour::calculateCostToCycle(int node, int cycle)
 {
 	distance minCost = std::numeric_limits<distance>::max();
 	std::forward_list<int>::iterator positionInCycle;
@@ -21,7 +21,7 @@ std::pair<distance, std::forward_list<int>::iterator> NearestNeighbor::calculate
 	return std::pair <distance, std::forward_list<int>::iterator>(minCost, positionInCycle);
 }
 
-std::string NearestNeighbor::getName()
+std::string NearestNeighbour::getName()
 {
-	return "Nearest Neighbor";
+	return "Nearest Neighbour";
 }

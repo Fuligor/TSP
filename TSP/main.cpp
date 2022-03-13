@@ -6,7 +6,7 @@
 #include "Result.h"
 #include "TSPLoader.h"
 
-#include "NearestNeighbor.h"
+#include "NearestNeighbour.h"
 #include "GreedyCycle.h"
 #include "RegretHeuristics.h"
 
@@ -67,7 +67,7 @@ int main() {
 	std::string algorithmsResults = "";
 	for (int i = 0; i < 2; i++)
 	{
-		auto graph = loader->loadFile(filenames[i]);
+		auto graph = loader->loadFile("Data/" + filenames[i]);
 
 		std::cout << graph->getName() << std::endl;
 
@@ -79,14 +79,14 @@ int main() {
 			std::cout << std::endl;
 		}*/
 		algorithmsResults += graph->getName() + "\n";
-		algorithmsResults += testAlgorithm(graph, std::make_shared<NearestNeighbor>(), loader->getLocation(), filenames[i]);
+		algorithmsResults += testAlgorithm(graph, std::make_shared<NearestNeighbour>(), loader->getLocation(), filenames[i]);
 		algorithmsResults += testAlgorithm(graph, std::make_shared<GreedyCycle>(), loader->getLocation(), filenames[i]);
 		algorithmsResults += testAlgorithm(graph, std::make_shared<RegretHeuristics>(), loader->getLocation(), filenames[i]);
 	}
 	
 	
 	std::ofstream output;
-	output.open("Wyniki_algorytmow.txt");
+	output.open("Results/Wyniki_algorytmow.txt");
 	output << algorithmsResults;
 	output.close();
 	

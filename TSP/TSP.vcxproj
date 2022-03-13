@@ -147,7 +147,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GreedyCycle.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NearestNeighbor.cpp" />
+    <ClCompile Include="NearestNeighbour.cpp" />
     <ClCompile Include="RegretHeuristics.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="TSPLoader.cpp" />
@@ -158,7 +158,7 @@
     <ClInclude Include="DrawGraph.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GreedyCycle.h" />
-    <ClInclude Include="NearestNeighbor.h" />
+    <ClInclude Include="NearestNeighbour.h" />
     <ClInclude Include="RegretHeuristics.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="TSPLoader.h" />
