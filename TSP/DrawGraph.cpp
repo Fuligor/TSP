@@ -19,11 +19,23 @@ void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result, 
         {
             maximumY = locations[i].second;
         }
+
     }
     sf::Vector2i windowSize(maximumX+2*padding, maximumY + 2 * padding);
     
-    sf::RenderWindow window(sf::VideoMode(windowSize.x, windowSize.y), algorithmName);
+    sf::RenderTexture window;
+    window.create(windowSize.x, windowSize.y);
     window.clear(sf::Color::White);
+    for (int i = 0; i < size; i++)
+    {
+    
+
+        sf::CircleShape circle;
+        circle.setRadius(5);
+        circle.setFillColor(sf::Color::Black);
+        circle.setPosition(locations[i].first + padding - 5, locations[i].second + padding - 5);
+        window.draw(circle);
+    }
     for(int i = 0; i<2;++i)
     {
         int last = -1;
@@ -40,6 +52,7 @@ void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result, 
                 window.draw(line, 2, sf::Lines);
             }
             last = j;
+            
         }
 
         sf::Vertex line[] =
@@ -51,15 +64,14 @@ void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result, 
         window.draw(line, 2, sf::Lines);
     }
         
-    sf::Texture texture;
-    texture.create(window.getSize().x, window.getSize().y);
-    texture.update(window);
+    sf::Texture texture = window.getTexture();
+
     std::string name = "Results/" + filename + "_" + algorithmName + ".png";
     if (texture.copyToImage().saveToFile(name))
     {
         std::cout << "screenshot saved to " << name << std::endl;
     }
-    window.close();
+
 }
 
 
