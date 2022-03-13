@@ -1,43 +1,65 @@
-#ifndef _DEBUG
+#include <iostream> 
 
 #include "DrawGraph.h"
 
 #include <SFML/Graphics.hpp>
 
-void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result)
+void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result, std::string algorithmName, std::string filename, int size)
 {
-    sf::Vector2i windowSize(800, 800);
-
-    sf::RenderWindow window(sf::VideoMode(windowSize.x, windowSize.y), "SFML works!");
-    while (window.isOpen())
+    int padding = 10;
+    int maximumX = 0;
+    int maximumY = 0;
+    for (int i = 0; i < size; i++)
     {
-        sf::Event event;
-        while (window.pollEvent(event))
+        if (locations[i].first > maximumX)
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            maximumX = locations[i].first;
         }
-
-        window.clear();
-        for(int i = 0; i<2;++i)
+        if (locations[i].second > maximumY)
         {
-
-            for (auto j : result->cycle[i])
+            maximumY = locations[i].second;
+        }
+    }
+    sf::Vector2i windowSize(maximumX+2*padding, maximumY + 2 * padding);
+    
+    sf::RenderWindow window(sf::VideoMode(windowSize.x, windowSize.y), algorithmName);
+    window.clear(sf::Color::White);
+    for(int i = 0; i<2;++i)
+    {
+        int last = -1;
+        for (auto j : result->cycle[i])
+        {
+            if (last != -1)
             {
                 sf::Vertex line[] =
                 {
-                    sf::Vertex(sf::Vector2f(10.f, 10.f)),
-                    sf::Vertex(sf::Vector2f(150.f, 150.f))
+                    sf::Vertex(sf::Vector2f(locations[last].first + padding, locations[last].second + padding), sf::Color::Black),
+                    sf::Vertex(sf::Vector2f(locations[j].first + padding, locations[j].second + padding), sf::Color::Black)
                 };
 
                 window.draw(line, 2, sf::Lines);
             }
+            last = j;
         }
-        
 
-        window.display();
+        sf::Vertex line[] =
+        {
+            sf::Vertex(sf::Vector2f(locations[last].first + padding, locations[last].second + padding), sf::Color::Black),
+            sf::Vertex(sf::Vector2f(locations[result->cycle[i].front()].first + padding, locations[result->cycle[i].front()].second + padding), sf::Color::Black)
+        };
+
+        window.draw(line, 2, sf::Lines);
     }
-   
+        
+    sf::Texture texture;
+    texture.create(window.getSize().x, window.getSize().y);
+    texture.update(window);
+    std::string name = filename + "_" + algorithmName + ".png";
+    if (texture.copyToImage().saveToFile(name))
+    {
+        std::cout << "screenshot saved to " << name << std::endl;
+    }
+    window.close();
 }
 
-#endif // !_DEBUG
+

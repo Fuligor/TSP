@@ -13,8 +13,8 @@ class TSPLoader:
 
     std::pair <std::string, std::string> getEntry(const std::string& line);
     std::shared_ptr<Graph> loadMetaData();
-    void loadLocations(location* locations);
-    void createGraph(std::shared_ptr<Graph>& graph, location* locations) const;
+    void loadLocations();
+    void createGraph(std::shared_ptr<Graph>& graph) const;
 public:
     ~TSPLoader();
 

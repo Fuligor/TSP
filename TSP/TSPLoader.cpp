@@ -71,7 +71,7 @@ std::shared_ptr<Graph> TSPLoader::loadMetaData()
 	return graph;
 }
 
-void TSPLoader::loadLocations(location* locations)
+void TSPLoader::loadLocations()
 {
 	std::string buf;
 
@@ -100,7 +100,7 @@ void TSPLoader::loadLocations(location* locations)
 	}
 }
 
-void TSPLoader::createGraph(std::shared_ptr<Graph>& graph, location* locations) const
+void TSPLoader::createGraph(std::shared_ptr<Graph>& graph) const
 {
 	for (unsigned int i = 0; i < graph->getSize(); ++i)
 	{
@@ -137,9 +137,9 @@ std::shared_ptr<Graph> TSPLoader::loadFile(std::string fileName)
 		delete[] locations;
 	}
 
-	location* locations = new location[graph->getSize()];
-	loadLocations(locations);
-	createGraph(graph, locations);
+	locations = new location[graph->getSize()];
+	loadLocations();
+	createGraph(graph);
 
 	file.close();
 
