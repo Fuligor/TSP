@@ -1,7 +1,8 @@
 #pragma once
-#include "AbstractAlgorithm.h"
+#include "GreedyAlgorithm.h"
+
 class RegretHeuristics:
-    public AbstractAlgorithm
+    public GreedyAlgorithm
 {
     // Odziedziczono za poœrednictwem elementu AbstractAlgorithm
     virtual std::pair<distance, std::forward_list<int>::iterator> calculateCostToCycle(int node, int cycle) override;

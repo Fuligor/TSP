@@ -9,7 +9,7 @@
 #include "GreedyCycle.h"
 #include "RegretHeuristics.h"
 
-void testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <AbstractAlgorithm> algorithm)
+void testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <GreedyAlgorithm> algorithm)
 {
 	algorithm->setGraph(graph);
 
