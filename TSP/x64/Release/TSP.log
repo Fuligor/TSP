@@ -1,8 +1,0 @@
-﻿  RegretHeuristics.cpp
-D:\Programowania\Studia\semestr 8\IMO\TSP\TSP\RegretHeuristics.cpp(36,16): warning C4244: "inicjowanie": konwersja z "double" do "distance", możliwa utrata danych
-  Trwa generowanie kodu
-  1 of 604 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Zakończono generowanie kodu
-  TSP.vcxproj -> D:\Programowania\Studia\semestr 8\IMO\TSP\x64\Release\TSP.exe

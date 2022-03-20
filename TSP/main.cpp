@@ -1,15 +1,18 @@
 #include <limits>
 #include <iostream>
+#include <fstream>
 
 #include "Graph.h"
 #include "Result.h"
 #include "TSPLoader.h"
 
-#include "NearestNeighbor.h"
+#include "NearestNeighbour.h"
 #include "GreedyCycle.h"
 #include "RegretHeuristics.h"
 
-void testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <GreedyAlgorithm> algorithm)
+#include "DrawGraph.h"
+
+std::string testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <AbstractAlgorithm> algorithm, location* locations, std::string filename)
 {
 	algorithm->setGraph(graph);
 
@@ -51,26 +54,40 @@ void testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <GreedyAlgori
 	}
 
 	std::cout << algorithm->getName() << ": " << avg << "(" << min << " - " << max << ")" << std::endl;
+	
+	DrawGraph draw = DrawGraph();
+	draw.showGraph(locations, minCycle, algorithm->getName(), filename, graph->getSize());
+
+	return algorithm->getName() + ": " + std::to_string(avg) + "(" + std::to_string(min) + " - " + std::to_string(max) + ")\n";
 }
 
 int main() {
-	std::shared_ptr<AbstractLoader> loader = std::make_shared<TSPLoader>();
-	
-	auto graph = loader->loadFile("kroB100.tsp");
+	std::shared_ptr<TSPLoader> loader = std::make_shared<TSPLoader>();
+	std::string filenames[2] = { "kroA100.tsp", "kroB100.tsp" };
+	std::string algorithmsResults = "";
+	for (int i = 0; i < 2; i++)
+	{
+		auto graph = loader->loadFile("Data/" + filenames[i]);
 
-	std::cout << graph->getName() << std::endl;
+		std::cout << graph->getName() << std::endl;
 
-	for(unsigned int i = 0; i < graph->getSize(); ++i) {
-		for(unsigned int j = 0; j < graph->getSize(); ++j) {
-			std::cout << (*graph.get())[i][j] << "\t";
-		}
+		/*for(unsigned int i = 0; i < graph->getSize(); ++i) {
+			for(unsigned int j = 0; j < graph->getSize(); ++j) {
+				std::cout << (*graph.get())[i][j] << "\t";
+			}
 
-		std::cout << std::endl;
+			std::cout << std::endl;
+		}*/
+		algorithmsResults += graph->getName() + "\n";
+		algorithmsResults += testAlgorithm(graph, std::make_shared<NearestNeighbour>(), loader->getLocation(), filenames[i]);
+		algorithmsResults += testAlgorithm(graph, std::make_shared<GreedyCycle>(), loader->getLocation(), filenames[i]);
+		algorithmsResults += testAlgorithm(graph, std::make_shared<RegretHeuristics>(), loader->getLocation(), filenames[i]);
 	}
-
-	testAlgorithm(graph, std::make_shared<NearestNeighbor>());
-	testAlgorithm(graph, std::make_shared<GreedyCycle>());
-	testAlgorithm(graph, std::make_shared<RegretHeuristics>());
-
-	// for(int i = 0; i < graph->getSize(); ++i)
+	
+	
+	std::ofstream output;
+	output.open("Results/Wyniki_algorytmow.txt");
+	output << algorithmsResults;
+	output.close();
+	
 }

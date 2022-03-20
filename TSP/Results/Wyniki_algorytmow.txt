@@ -1,0 +1,8 @@
+kroA100
+Nearest Neighbour: 32641.510000(28761 - 35175)
+Greedy Cycle: 28708.720000(26304 - 29980)
+Regret Heuristics: 26403.840000(23729 - 32441)
+kroB100
+Nearest Neighbour: 32574.440000(29852 - 34424)
+Greedy Cycle: 28538.660000(27180 - 30197)
+Regret Heuristics: 27416.490000(24225 - 29793)
