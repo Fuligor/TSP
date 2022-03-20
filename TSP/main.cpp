@@ -9,6 +9,7 @@
 #include "NearestNeighbour.h"
 #include "GreedyCycle.h"
 #include "RegretHeuristics.h"
+#include "RandomCycle.h"
 
 #include "DrawGraph.h"
 
@@ -82,6 +83,7 @@ int main() {
 		algorithmsResults += testAlgorithm(graph, std::make_shared<NearestNeighbour>(), loader->getLocation(), filenames[i]);
 		algorithmsResults += testAlgorithm(graph, std::make_shared<GreedyCycle>(), loader->getLocation(), filenames[i]);
 		algorithmsResults += testAlgorithm(graph, std::make_shared<RegretHeuristics>(), loader->getLocation(), filenames[i]);
+		algorithmsResults += testAlgorithm(graph, std::make_shared<RandomCycle>(), loader->getLocation(), filenames[i]);
 	}
 	
 	

@@ -4,6 +4,8 @@
 #include <random>
 #include <vector>
 
+#include <iostream>
+
 #include "Result.h"
 
 std::string RandomCycle::getName()
@@ -13,6 +15,8 @@ std::string RandomCycle::getName()
 
 void RandomCycle::calculate(int startingNode)
 {
+	_result = std::make_shared <Result>();
+
 	std::mt19937_64 gen(0);
 	std::vector <int> nodes;
 
@@ -28,7 +32,7 @@ void RandomCycle::calculate(int startingNode)
 
 	for (int i = 1; i < _graph->getSize(); ++i)
 	{
-		_result->cycle[i / (_graph->getSize() / 2)].push_front(nodes[i]);
+		_result->cycle[i / (_graph->getSize() / 2)].push_front(nodes[i - 1]);
 	}
 
 	_result->cycle[0].push_front(startingNode);
