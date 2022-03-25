@@ -3,16 +3,17 @@
 
 #include "Graph.h"
 
-struct Result;
+struct SearchState;
 
 class Move
 {
-	std::shared_ptr <Graph> _graph;
-	std::shared_ptr <Result> _result;
+protected:
+	std::shared_ptr <SearchState> _state;
 public:
-	Move(std::shared_ptr <Graph> graph, std::shared_ptr <Result> initial_result);
+	Move(std::shared_ptr <SearchState> state);
 
 	virtual void makeMove() = 0;
 	virtual distance calculateCost() = 0;
+	virtual std::string getName() = 0;
 };
 

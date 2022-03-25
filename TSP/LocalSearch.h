@@ -6,24 +6,35 @@
 
 #include "MovementManager.h"
 
+#include <memory>
+
 class LocalSearch:
 	public AbstractAlgorithm
 {
 protected:
-	std::list <std::shared_ptr <MovementManager>> movementManagers;
+	std::shared_ptr <AbstractAlgorithm> _baseAlgorithm;
+	std::list <std::shared_ptr <MovementManager>> _movementManagers;
+	std::vector <std::shared_ptr <Move>> _moves;
 public:
 	template <typename... Args>
-	LocalSearch(Args... args);
+	LocalSearch(std::shared_ptr <AbstractAlgorithm> baseAlgorithm, Args... args);
+
+	virtual void setGraph(std::shared_ptr <Graph> graph) override;
+	virtual std::string getName() override;
+	virtual void calculate(int startingNode) override;
 private:
 	void construct(std::shared_ptr <MovementManager> movement);
 	template <typename... Args>
 	void construct(std::shared_ptr <MovementManager> movement, Args... args);
+
+	virtual std::shared_ptr <Move>& selectMove() = 0;
 };
 
 template<typename ...Args>
-inline LocalSearch::LocalSearch(Args ...args)
+inline LocalSearch::LocalSearch(std::shared_ptr <AbstractAlgorithm> baseAlgorithm, Args ...args):
+	_baseAlgorithm(baseAlgorithm)
 {
-	construct(args);
+	construct(args...);
 }
 
 template<typename ...Args>

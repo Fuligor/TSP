@@ -69,10 +69,37 @@
     <ClCompile Include="LocalSearch.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
     </ClCompile>
-    <ClCompile Include="MovementManager.cpp">
+    <ClCompile Include="Move.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
     </ClCompile>
-    <ClCompile Include="Move.cpp">
+    <ClCompile Include="InnerEdgeSwap.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="InnerMove.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="InnerVertexSwap.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="OuterVertexSwap.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchState.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="GreedyLocalSearch.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="SteepLocalSearch.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="InnerEdgeSwapManager.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="InnerVertexSwapManager.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="OuterVertexSwapManager.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
     </ClCompile>
   </ItemGroup>
@@ -117,6 +144,36 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Move.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="InnerEdgeSwap.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="InnerMove.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="InnerVertexSwap.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="OuterVertexSwap.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchState.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="GreedyLocalSearch.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="SteepLocalSearch.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="InnerEdgeSwapManager.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="InnerVertexSwapManager.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="OuterVertexSwapManager.h">
       <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,0 +1,18 @@
+kroA100
+Greedy Local Search Regret Heuristics Inner Edge Outer Vertex  Time: 0.007290(0.003440 - 0.014253)
+Greedy Local Search Regret Heuristics Inner Vertex Outer Vertex  Time: 0.008218(0.004266 - 0.017320)
+Steep Local Search Regret Heuristics Inner Edge Outer Vertex  Time: 0.007802(0.002871 - 0.022226)
+Steep Local Search Regret Heuristics Inner Vertex Outer Vertex  Time: 0.006275(0.002852 - 0.015896)
+Greedy Local Search Random Cycle Inner Edge Outer Vertex  Time: 0.089629(0.044838 - 0.157534)
+Greedy Local Search Random Cycle Inner Vertex Outer Vertex  Time: 0.092150(0.053014 - 0.138516)
+Steep Local Search Random Cycle Inner Edge Outer Vertex  Time: 0.034066(0.018641 - 0.082354)
+Steep Local Search Random Cycle Inner Vertex Outer Vertex  Time: 0.045556(0.021803 - 0.076081)
+kroB100
+Greedy Local Search Regret Heuristics Inner Edge Outer Vertex  Time: 0.008853(0.003410 - 0.020039)
+Greedy Local Search Regret Heuristics Inner Vertex Outer Vertex  Time: 0.007452(0.003542 - 0.014443)
+Steep Local Search Regret Heuristics Inner Edge Outer Vertex  Time: 0.009551(0.002853 - 0.022304)
+Steep Local Search Regret Heuristics Inner Vertex Outer Vertex  Time: 0.006618(0.003105 - 0.013009)
+Greedy Local Search Random Cycle Inner Edge Outer Vertex  Time: 0.077296(0.043271 - 0.124090)
+Greedy Local Search Random Cycle Inner Vertex Outer Vertex  Time: 0.085933(0.049478 - 0.158979)
+Steep Local Search Random Cycle Inner Edge Outer Vertex  Time: 0.026838(0.016470 - 0.040155)
+Steep Local Search Random Cycle Inner Vertex Outer Vertex  Time: 0.043573(0.023468 - 0.082947)

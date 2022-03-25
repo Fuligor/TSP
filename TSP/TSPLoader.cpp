@@ -110,11 +110,13 @@ void TSPLoader::createGraph(std::shared_ptr<Graph>& graph) const
 			{
 				(*graph.get())[i][j] = 0;
 			}
+			else
+			{
+				distance dist = getDistance(locations[i], locations[j]);
 
-			distance dist = getDistance(locations[i], locations[j]);
-
-			(*graph.get())[i][j] = dist;
-			(*graph.get())[j][i] = dist;
+				(*graph.get())[i][j] = dist;
+				(*graph.get())[j][i] = dist;
+			}
 		}
 	}
 }

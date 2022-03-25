@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -116,10 +116,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\SFML\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\SFML\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-window.lib;sfml-main.lib;sfml-graphics.lib;sfml-system.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,14 +150,23 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GreedyAlgorithm.cpp" />
     <ClCompile Include="GreedyCycle.cpp" />
+    <ClCompile Include="GreedyLocalSearch.cpp" />
+    <ClCompile Include="InnerEdgeSwap.cpp" />
+    <ClCompile Include="InnerEdgeSwapManager.cpp" />
+    <ClCompile Include="InnerMove.cpp" />
+    <ClCompile Include="InnerVertexSwap.cpp" />
+    <ClCompile Include="InnerVertexSwapManager.cpp" />
     <ClCompile Include="LocalSearch.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Move.cpp" />
-    <ClCompile Include="MovementManager.cpp" />
     <ClCompile Include="NearestNeighbour.cpp" />
+    <ClCompile Include="OuterVertexSwap.cpp" />
+    <ClCompile Include="OuterVertexSwapManager.cpp" />
     <ClCompile Include="RandomCycle.cpp" />
     <ClCompile Include="RegretHeuristics.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="SearchState.cpp" />
+    <ClCompile Include="SteepLocalSearch.cpp" />
     <ClCompile Include="TSPLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,13 +176,23 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GreedyAlgorithm.h" />
     <ClInclude Include="GreedyCycle.h" />
+    <ClInclude Include="GreedyLocalSearch.h" />
+    <ClInclude Include="InnerEdgeSwap.h" />
+    <ClInclude Include="InnerEdgeSwapManager.h" />
+    <ClInclude Include="InnerMove.h" />
+    <ClInclude Include="InnerVertexSwap.h" />
+    <ClInclude Include="InnerVertexSwapManager.h" />
     <ClInclude Include="LocalSearch.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="MovementManager.h" />
     <ClInclude Include="NearestNeighbour.h" />
+    <ClInclude Include="OuterVertexSwap.h" />
+    <ClInclude Include="OuterVertexSwapManager.h" />
     <ClInclude Include="RandomCycle.h" />
     <ClInclude Include="RegretHeuristics.h" />
     <ClInclude Include="Result.h" />
+    <ClInclude Include="SearchState.h" />
+    <ClInclude Include="SteepLocalSearch.h" />
     <ClInclude Include="TSPLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -69,7 +69,7 @@ void DrawGraph::showGraph(location* locations, std::shared_ptr <Result> result, 
         
     sf::Texture texture = window.getTexture();
 
-    std::string name = "Results/" + filename + "_" + algorithmName + ".png";
+    std::string name = filename + "_" + algorithmName + ".png";
     if (texture.copyToImage().saveToFile(name))
     {
         std::cout << "screenshot saved to " << name << std::endl;

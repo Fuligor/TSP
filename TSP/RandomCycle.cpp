@@ -30,9 +30,9 @@ void RandomCycle::calculate(int startingNode)
 
 	std::shuffle(nodes.begin(), nodes.end(), gen);
 
-	for (int i = 1; i < _graph->getSize(); ++i)
+	for (int i = 0; i < _graph->getSize() - 1; ++i)
 	{
-		_result->cycle[i / (_graph->getSize() / 2)].push_front(nodes[i - 1]);
+		_result->cycle[(i + 1) / (_graph->getSize() / 2)].push_front(nodes[i]);
 	}
 
 	_result->cycle[0].push_front(startingNode);
