@@ -163,6 +163,7 @@
     <ClCompile Include="OuterVertexSwap.cpp" />
     <ClCompile Include="OuterVertexSwapManager.cpp" />
     <ClCompile Include="RandomCycle.cpp" />
+    <ClCompile Include="RandomWalker.cpp" />
     <ClCompile Include="RegretHeuristics.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="SearchState.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="OuterVertexSwap.h" />
     <ClInclude Include="OuterVertexSwapManager.h" />
     <ClInclude Include="RandomCycle.h" />
+    <ClInclude Include="RandomWalker.h" />
     <ClInclude Include="RegretHeuristics.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="SearchState.h" />

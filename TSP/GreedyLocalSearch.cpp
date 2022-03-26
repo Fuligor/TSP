@@ -12,9 +12,7 @@ std::string GreedyLocalSearch::getName()
 
 std::shared_ptr <Move>& GreedyLocalSearch::selectMove()
 {
-	std::mt19937_64 gen(0);
-
-	std::shuffle(_moves.begin(), _moves.end(), gen);
+	std::shuffle(_moves.begin(), _moves.end(), _gen);
 
 	for (auto& move : _moves) {
 		if (move->calculateCost() < 0) {

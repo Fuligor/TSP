@@ -41,7 +41,7 @@ void LocalSearch::calculate(int startingNode)
 	while (true) {
 		auto& move = selectMove();
 
-		if (move->calculateCost() >= 0) {
+		if (stopCondition(move)) {
 			break;
 		}
 
@@ -49,4 +49,8 @@ void LocalSearch::calculate(int startingNode)
 	}
 
 	_result = state->getResult();
+}
+
+bool LocalSearch::stopCondition(std::shared_ptr <Move>& move) {
+	return move->calculateCost() >= 0;
 }

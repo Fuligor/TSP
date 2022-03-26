@@ -10,8 +10,9 @@ public:
 	
 	// Odziedziczono za poœrednictwem elementu LocalSearch
 	virtual std::string getName() override;
-	virtual std::shared_ptr <Move>& selectMove() override;
 
+protected:
+	virtual std::shared_ptr <Move>& selectMove() override;
 };
 
 template<typename ...Args>
