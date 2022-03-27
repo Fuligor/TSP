@@ -4,6 +4,8 @@
 #include <chrono>
 #include <random>
 
+#include "Graph.h"
+
 class RandomWalker :
 	public LocalSearch
 {

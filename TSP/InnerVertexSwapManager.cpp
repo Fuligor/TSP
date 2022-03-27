@@ -5,7 +5,7 @@
 
 std::string InnerVertexSwapManager::getName()
 {
-	return "Inner Vertex";
+	return "Vertex";
 }
 
 void InnerVertexSwapManager::generateMoves(std::shared_ptr<SearchState> state, std::vector<std::shared_ptr <Move>>& moves)

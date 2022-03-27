@@ -4,7 +4,7 @@
 
 std::string SteepLocalSearch::getName()
 {
-	return "Steep Local Search " + LocalSearch::getName();
+	return "Steep " + LocalSearch::getName();
 }
 
 std::shared_ptr <Move>& SteepLocalSearch::selectMove()

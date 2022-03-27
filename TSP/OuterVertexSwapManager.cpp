@@ -5,7 +5,7 @@
 
 std::string OuterVertexSwapManager::getName()
 {
-	return "Outer Vertex";
+	return "Vertex";
 }
 
 void OuterVertexSwapManager::generateMoves(std::shared_ptr<SearchState> state, std::vector<std::shared_ptr <Move>>& moves) {

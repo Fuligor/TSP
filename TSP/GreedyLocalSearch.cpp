@@ -7,7 +7,7 @@
 
 std::string GreedyLocalSearch::getName()
 {
-	return "Greedy Local Search " + LocalSearch::getName();
+	return "Greedy " + LocalSearch::getName();
 }
 
 std::shared_ptr <Move>& GreedyLocalSearch::selectMove()

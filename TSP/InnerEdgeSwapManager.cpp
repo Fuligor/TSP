@@ -5,7 +5,7 @@
 
 std::string InnerEdgeSwapManager::getName()
 {
-	return "Inner Edge";
+	return "Edge";
 }
 
 void InnerEdgeSwapManager::generateMoves(std::shared_ptr<SearchState> state, std::vector<std::shared_ptr <Move>>& moves)
