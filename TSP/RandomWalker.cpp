@@ -18,7 +18,7 @@ void RandomWalker::calculate(int startingNode)
 	_result = _baseAlgorithm->getResult();
 	distance _minDelta = 0;
 	distance _actualDelta = 0;
-	auto state = std::make_shared <SearchState>(_graph, _result);
+	auto state = std::make_shared <SearchState>(_graph, _result, 10);
 
 	_moves.clear();
 

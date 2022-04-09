@@ -159,6 +159,7 @@
     <ClCompile Include="LocalSearch.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Move.cpp" />
+    <ClCompile Include="MovementManager.cpp" />
     <ClCompile Include="NearestNeighbour.cpp" />
     <ClCompile Include="OuterVertexSwap.cpp" />
     <ClCompile Include="OuterVertexSwapManager.cpp" />

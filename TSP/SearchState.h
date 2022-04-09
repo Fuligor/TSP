@@ -10,8 +10,9 @@ struct SearchState
 {
 	std::shared_ptr <Graph> graph;
 	std::vector <int> cycle[2];
+	int** closests;
 
-	SearchState(std::shared_ptr <Graph> graph, std::shared_ptr <Result> result);
+	SearchState(std::shared_ptr <Graph> graph, std::shared_ptr <Result> result, int n);
 
 	std::shared_ptr <Result> getResult() const;
 };

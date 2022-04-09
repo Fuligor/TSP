@@ -29,16 +29,20 @@ std::string LocalSearch::getName()
 
 void LocalSearch::calculate(int startingNode)
 {
+	int n = 10;
 	_baseAlgorithm->calculate(startingNode);
-	auto state = std::make_shared <SearchState>(_graph, _baseAlgorithm->getResult());
+	auto state = std::make_shared <SearchState>(_graph, _baseAlgorithm->getResult(), n);
 
-	_moves.clear();
+	
 
-	for (auto i : _movementManagers) {
-		i->generateMoves(state, _moves);
-	}
+	
 
 	while (true) {
+		_moves.clear();
+		for (auto i : _movementManagers) {
+			//i->generateMoves(state, _moves);
+			i->generateCanditatesMoves(state, _moves, n);
+		}
 		auto& move = selectMove();
 
 		if (stopCondition(move)) {

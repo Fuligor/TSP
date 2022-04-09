@@ -105,6 +105,9 @@
     <ClCompile Include="RandomWalker.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
     </ClCompile>
+    <ClCompile Include="MovementManager.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractLoader.h">
