@@ -27,7 +27,7 @@ void InnerVertexSwapManager::generateCanditatesMoves(std::shared_ptr<SearchState
 			for (int k = j + 1; k < state->cycle[i].size(); ++k) {
 				for (int l = 0; l < n; l++)
 				{
-					if (state->closests[j][l] == state->cycle[1][k])
+					if (state->closests[j][l] == state->cycle[i][k])
 					{
 						moves.push_back(std::shared_ptr <Move>(new InnerVertexSwap(state, i, j, k)));
 						break;

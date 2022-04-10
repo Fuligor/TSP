@@ -1,0 +1,4 @@
+kroA200
+Steep Random Cycle Edge Vertex : 39125.070000(37036 - 41563)
+kroB200
+Steep Random Cycle Edge Vertex : 38961.000000(36644 - 41586)

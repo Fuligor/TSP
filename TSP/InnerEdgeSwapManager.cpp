@@ -26,9 +26,9 @@ void InnerEdgeSwapManager::generateCanditatesMoves(std::shared_ptr<SearchState> 
 
 			//int* closest = getClosest(n, j, graph);
 			for (int k = j + 2; k < state->cycle[i].size(); ++k) {
-				for (int l = 0; l < n; l++)
+				for (int l = 0; l < n; ++l)
 				{
-					if (state->closests[j][l] == state->cycle[1][k])
+					if (state->closests[state->cycle[i][j]][l] == state->cycle[i][k] || state->closests[state->cycle[i][k]][l] == state->cycle[i][j])
 					{
 						moves.push_back(std::shared_ptr <Move>(new InnerEdgeSwap(state, i, j, k)));
 						break;

@@ -96,9 +96,12 @@ std::string* testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <Abst
 void exercise1()
 {
 	std::shared_ptr<TSPLoader> loader = std::make_shared<TSPLoader>();
-	std::string filenames[2] = { "kroA100.tsp", "kroB100.tsp" };
+	std::string filenames[2] = { "kroA200.tsp", "kroB200.tsp" };
 	std::string algorithmsResults = "";
-	std::string resultDir = "ResultsLab1/";
+	std::string* result;
+	std::string timeResults = "";
+
+	std::string resultDir = "ResultsLab3/";
 	for (int i = 0; i < 2; i++)
 	{
 		auto graph = loader->loadFile("Data/" + filenames[i]);
@@ -106,25 +109,33 @@ void exercise1()
 		std::cout << graph->getName() << std::endl;
 
 		algorithmsResults += graph->getName() + "\n";
-		algorithmsResults += testAlgorithm(graph, std::make_shared<NearestNeighbour>(), loader->getLocation(), resultDir + filenames[i])[0];
-		algorithmsResults += testAlgorithm(graph, std::make_shared<GreedyCycle>(), loader->getLocation(), resultDir + filenames[i])[0];
-		algorithmsResults += testAlgorithm(graph, std::make_shared<RegretHeuristics>(), loader->getLocation(), resultDir + filenames[i])[0];
-		algorithmsResults += testAlgorithm(graph, std::make_shared<RandomCycle>(), loader->getLocation(), resultDir + filenames[i])[0];
+		timeResults += graph->getName() + "\n";
+
+		//algorithmsResults += testAlgorithm(graph, std::make_shared<NearestNeighbour>(), loader->getLocation(), resultDir + filenames[i])[0];
+		//algorithmsResults += testAlgorithm(graph, std::make_shared<GreedyCycle>(), loader->getLocation(), resultDir + filenames[i])[0];
+		result = testAlgorithm(graph, std::make_shared<RegretHeuristics>(), loader->getLocation(), resultDir + filenames[i]);
+		algorithmsResults += result[0];
+		timeResults += result[1];
+		//algorithmsResults += testAlgorithm(graph, std::make_shared<RandomCycle>(), loader->getLocation(), resultDir + filenames[i])[0];
 
 	}
 
 
-	std::ofstream output;
+	std::ofstream output, outputTime;
 	output.open(resultDir + "Wyniki_algorytmow.txt");
 	output << algorithmsResults;
 	output.close();
+
+	outputTime.open(resultDir + "Wyniki_czasowe.txt");
+	outputTime << timeResults;
+	outputTime.close();
 }
 
 std::vector <std::shared_ptr <AbstractAlgorithm>> createAlgorithms(std::shared_ptr <AbstractAlgorithm> baseAlgorithm, std::shared_ptr <MovementManager> innerMove)
 {
 	return std::vector <std::shared_ptr <AbstractAlgorithm>> {
-		std::shared_ptr <AbstractAlgorithm>(new GreedyLocalSearch(baseAlgorithm,
-			innerMove, std::make_shared <OuterVertexSwapManager>())),
+		//std::shared_ptr <AbstractAlgorithm>(new GreedyLocalSearch(baseAlgorithm,
+		//	innerMove, std::make_shared <OuterVertexSwapManager>())),
 		std::shared_ptr <AbstractAlgorithm>(new SteepLocalSearch(baseAlgorithm,
 			innerMove, std::make_shared <OuterVertexSwapManager>()))
 	};
@@ -133,19 +144,19 @@ std::vector <std::shared_ptr <AbstractAlgorithm>> createAlgorithms(std::shared_p
 void exercise2()
 {
 	std::shared_ptr<TSPLoader> loader = std::make_shared<TSPLoader>();
-	std::string filenames[2] = { "kroA100.tsp", "kroB100.tsp" };
+	std::string filenames[2] = { "kroA200.tsp", "kroB200.tsp" };
 	std::string algorithmsResults = "";
 	std::string timeResults = "";
-	std::string resultDir = "ResultsLab2/";
+	std::string resultDir = "ResultsLab3/";
 
 	std::shared_ptr <AbstractAlgorithm> baseAlgorithms[] = {
-		std::make_shared<RegretHeuristics>(),
+		//std::make_shared<RegretHeuristics>(),
 		std::make_shared<RandomCycle>()
 	};
 
 	std::shared_ptr <MovementManager> innerMoves[] = {
-		std::make_shared <InnerEdgeSwapManager>(),
-		std::make_shared <InnerVertexSwapManager>()
+		std::make_shared <InnerEdgeSwapManager>()//,
+		//std::make_shared <InnerVertexSwapManager>()
 	};
 
 	std::string* result;
@@ -177,14 +188,14 @@ void exercise2()
 					delete[] result;
 				}
 
-				auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new RandomWalker(
+				/*auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new RandomWalker(
 					max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
 				));
 
 				result = testAlgorithm(graph, randomWalker,
 					loader->getLocation(), resultDir + filenames[i]);
 				algorithmsResults += result[0];
-				timeResults += result[1];
+				timeResults += result[1];*/
 			}
 		}
 

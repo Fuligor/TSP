@@ -1,0 +1,4 @@
+kroA200
+Regret Heuristics Time: 0.001453(0.001342 - 0.001687)
+kroB200
+Regret Heuristics Time: 0.001531(0.001395 - 0.002011)

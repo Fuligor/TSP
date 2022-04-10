@@ -51,6 +51,15 @@ SearchState::SearchState(std::shared_ptr<Graph> graph, std::shared_ptr<Result> r
 		}
 	}
 
+	/*for (unsigned int k = 0; k < graph->getSize(); k++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			std::cout<<closests[k][i] <<" ";
+		}
+		std::cout << std::endl;
+	}*/
+
 }
 
 std::shared_ptr<Result> SearchState::getResult() const

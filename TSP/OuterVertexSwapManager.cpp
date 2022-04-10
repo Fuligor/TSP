@@ -23,7 +23,7 @@ void OuterVertexSwapManager::generateCanditatesMoves(std::shared_ptr<SearchState
 		for (int k = 0; k < state->cycle[1].size(); ++k) {
 			for (int l = 0; l < n; l++)
 			{
-				if (state->closests[j][l] == state->cycle[1][k])
+				if (state->closests[state->cycle[0][j]][l] == state->cycle[1][k] || state->closests[state->cycle[1][k]][l] == state->cycle[0][j])
 				{
 					moves.push_back(std::shared_ptr <Move>(new OuterVertexSwap(state, j, k)));
 					break;
