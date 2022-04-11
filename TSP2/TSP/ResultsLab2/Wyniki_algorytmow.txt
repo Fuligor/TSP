@@ -1,0 +1,4 @@
+kroA200
+Local Search with Memory : 38446.310000(35770 - 40974)
+kroB200
+Local Search with Memory : 38642.770000(36537 - 42081)

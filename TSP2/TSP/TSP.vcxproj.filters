@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pliki źródłowe">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Pliki zasobów">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Algorithms">
+      <UniqueIdentifier>{e7bbd45a-0b9e-4c69-883f-55342e990602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Algorithms">
+      <UniqueIdentifier>{4db76959-5ed4-485b-ba9b-ad499d0ae42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Algorithms\Greedy">
+      <UniqueIdentifier>{3864ab08-e441-4ba0-bc3c-e8f3e644c4df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Algorithms\Greedy">
+      <UniqueIdentifier>{86d2db9e-2928-408c-aea9-5c8ff72b3d6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Algorithms\Local search">
+      <UniqueIdentifier>{2afca1d9-ae86-4c90-a6ca-e3928855794b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Algorithms\Local search">
+      <UniqueIdentifier>{e5733df7-e0d2-4deb-9f5d-52f55c10b696}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="TSPLoader.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Result.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawGraph.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractAlgorithm.cpp">
+      <Filter>Pliki źródłowe\Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="GreedyAlgorithm.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="GreedyCycle.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="NearestNeighbour.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomCycle.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="RegretHeuristics.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalSearch.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="InnerEdgeSwap.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="OuterVertexSwap.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchState.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveState.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractLoader.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="TSPLoader.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Result.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawGraph.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractAlgorithm.h">
+      <Filter>Pliki nagłówkowe\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="GreedyAlgorithm.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Greedy</Filter>
+    </ClInclude>
+    <ClInclude Include="GreedyCycle.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Greedy</Filter>
+    </ClInclude>
+    <ClInclude Include="NearestNeighbour.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Greedy</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomCycle.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Greedy</Filter>
+    </ClInclude>
+    <ClInclude Include="RegretHeuristics.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Greedy</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalSearch.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="InnerEdgeSwap.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="OuterVertexSwap.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchState.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveState.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

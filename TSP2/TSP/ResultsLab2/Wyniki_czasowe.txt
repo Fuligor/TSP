@@ -1,0 +1,4 @@
+kroA200
+Local Search with Memory  Time: 0.112201(0.096290 - 0.158725)
+kroB200
+Local Search with Memory  Time: 0.105000(0.090522 - 0.124556)

@@ -1,4 +1,4 @@
 kroA200
-Steep Random Cycle Edge Vertex  Time: 0.350924(0.326015 - 0.419259)
+Steep Random Cycle Edge Vertex  Time: 1.757669(1.490050 - 2.533003)
 kroB200
-Steep Random Cycle Edge Vertex  Time: 0.346266(0.320937 - 0.378319)
+Steep Random Cycle Edge Vertex  Time: 2.378129(1.507319 - 2.812619)

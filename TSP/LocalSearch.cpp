@@ -40,8 +40,8 @@ void LocalSearch::calculate(int startingNode)
 		
 		_moves.clear();
 		for (auto i : _movementManagers) {
-			//i->generateMoves(state, _moves);
-			i->generateCanditatesMoves(state, _moves, n);
+			i->generateMoves(state, _moves);
+			//i->generateCanditatesMoves(state, _moves, n);
 		}
 		auto& move = selectMove();
 
