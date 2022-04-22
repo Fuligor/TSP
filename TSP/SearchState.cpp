@@ -59,7 +59,18 @@ SearchState::SearchState(std::shared_ptr<Graph> graph, std::shared_ptr<Result> r
 		}
 		std::cout << std::endl;
 	}*/
+	update(result);
 
+}
+
+void SearchState::update(std::shared_ptr<Result> result)
+{
+	for (int i = 0; i < 2; i++) {
+		cycle[i].clear();
+		for (auto j : result->cycle[i]) {
+			cycle[i].push_back(j);
+		}
+	}
 }
 
 std::shared_ptr<Result> SearchState::getResult() const

@@ -34,15 +34,15 @@ void LocalSearch::calculate(int startingNode)
 	auto state = std::make_shared <SearchState>(_graph, _baseAlgorithm->getResult(), n);
 
 
-	
+	_moves.clear();
+	for (auto i : _movementManagers) {
+		i->generateMoves(state, _moves);
+		//i->generateCanditatesMoves(state, _moves, n);
+	}
 
 	while (true) {
 		
-		_moves.clear();
-		for (auto i : _movementManagers) {
-			i->generateMoves(state, _moves);
-			//i->generateCanditatesMoves(state, _moves, n);
-		}
+		
 		auto& move = selectMove();
 
 		if (stopCondition(move)) {

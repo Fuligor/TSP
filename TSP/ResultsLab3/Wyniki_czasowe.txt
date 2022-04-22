@@ -1,4 +1,2 @@
 kroA200
-Steep Random Cycle Edge Vertex  Time: 1.757669(1.490050 - 2.533003)
-kroB200
-Steep Random Cycle Edge Vertex  Time: 2.378129(1.507319 - 2.812619)
+MSLS  Time: 60.530225(59.958690 - 61.656601)

@@ -108,6 +108,15 @@
     <ClCompile Include="MovementManager.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
     </ClCompile>
+    <ClCompile Include="MSLS.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="ILS1.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="ILS2.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractLoader.h">
@@ -183,6 +192,15 @@
       <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
     </ClInclude>
     <ClInclude Include="RandomWalker.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="MSLS.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="ILS1.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="ILS2.h">
       <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
     </ClInclude>
   </ItemGroup>

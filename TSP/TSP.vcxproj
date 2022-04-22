@@ -151,6 +151,8 @@
     <ClCompile Include="GreedyAlgorithm.cpp" />
     <ClCompile Include="GreedyCycle.cpp" />
     <ClCompile Include="GreedyLocalSearch.cpp" />
+    <ClCompile Include="ILS1.cpp" />
+    <ClCompile Include="ILS2.cpp" />
     <ClCompile Include="InnerEdgeSwap.cpp" />
     <ClCompile Include="InnerEdgeSwapManager.cpp" />
     <ClCompile Include="InnerMove.cpp" />
@@ -160,6 +162,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="MovementManager.cpp" />
+    <ClCompile Include="MSLS.cpp" />
     <ClCompile Include="NearestNeighbour.cpp" />
     <ClCompile Include="OuterVertexSwap.cpp" />
     <ClCompile Include="OuterVertexSwapManager.cpp" />
@@ -179,6 +182,8 @@
     <ClInclude Include="GreedyAlgorithm.h" />
     <ClInclude Include="GreedyCycle.h" />
     <ClInclude Include="GreedyLocalSearch.h" />
+    <ClInclude Include="ILS1.h" />
+    <ClInclude Include="ILS2.h" />
     <ClInclude Include="InnerEdgeSwap.h" />
     <ClInclude Include="InnerEdgeSwapManager.h" />
     <ClInclude Include="InnerMove.h" />
@@ -187,6 +192,7 @@
     <ClInclude Include="LocalSearch.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="MovementManager.h" />
+    <ClInclude Include="MSLS.h" />
     <ClInclude Include="NearestNeighbour.h" />
     <ClInclude Include="OuterVertexSwap.h" />
     <ClInclude Include="OuterVertexSwapManager.h" />
