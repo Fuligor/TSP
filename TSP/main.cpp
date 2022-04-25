@@ -226,8 +226,8 @@ void exercise3()
 	std::string resultDir = "ResultsLab4/";
 
 	std::shared_ptr <AbstractAlgorithm> baseAlgorithms[] = {
-		std::make_shared<RegretHeuristics>()
-		//std::make_shared<RandomCycle>()
+		//std::make_shared<RegretHeuristics>()
+		std::make_shared<RandomCycle>()
 	};
 
 	std::shared_ptr <MovementManager> innerMoves[] = {
