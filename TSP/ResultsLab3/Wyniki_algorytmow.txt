@@ -1,4 +1,2 @@
 kroA200
-Steep Random Cycle Edge Vertex : 38416.980000(35635 - 41572)
-kroB200
-Steep Random Cycle Edge Vertex : 38631.510000(36602 - 42081)
+MSLS : 35874.600000(35635 - 36185)

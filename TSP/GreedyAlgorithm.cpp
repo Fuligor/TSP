@@ -70,11 +70,39 @@ void GreedyAlgorithm::initCalculations(int startingNode)
 
 void GreedyAlgorithm::calculate(int startingNode)
 {
-	initCalculations(startingNode);
-
-	int i = 0;
-
+	if (_result == nullptr)
+	{
+		initCalculations(startingNode);
+	}
+	else
+	{
+		bool* toAdd = new bool[_graph->getSize()];
+		for (int i = 0; i < _graph->getSize(); i++)
+		{
+			toAdd[i] = true;
+		}
+		for (int i = 0; i < 2; i++)
+		{
+			for (auto j : _result->cycle[i])
+			{
+				toAdd[j] = false;
+			}
+		}
+		_free_nodes.clear();
+		for (int i = 0; i < _graph->getSize(); i++)
+		{
+			if (toAdd[i])
+			{
+				_free_nodes.push_front(i);
+			}
+		}
+	}
+	
 	while(!_free_nodes.empty()) {
-		addBestNodeToCycle(i++ % 2);
+		int size0 = std::distance(_result->cycle[0].begin(), _result->cycle[0].end());
+		int size1 = std::distance(_result->cycle[1].begin(), _result->cycle[1].end());
+		int actualCycle = size0 > size1;
+
+		addBestNodeToCycle(actualCycle);
 	}
 }
