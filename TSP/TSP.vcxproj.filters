@@ -31,6 +31,12 @@
     <Filter Include="Pliki źródłowe\Algorithms\Local search">
       <UniqueIdentifier>{e5733df7-e0d2-4deb-9f5d-52f55c10b696}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\Algorithms\Genetic">
+      <UniqueIdentifier>{f4f37e50-3c8e-4eb1-9ea7-237ec7e16cd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\Algorithms\Genetic">
+      <UniqueIdentifier>{312948da-2f2f-4b37-ba70-139552ff58fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -105,9 +111,6 @@
     <ClCompile Include="RandomWalker.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
     </ClCompile>
-    <ClCompile Include="MovementManager.cpp">
-      <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
-    </ClCompile>
     <ClCompile Include="MSLS.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
     </ClCompile>
@@ -116,6 +119,15 @@
     </ClCompile>
     <ClCompile Include="ILS2.cpp">
       <Filter>Pliki źródłowe\Algorithms\Local search</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneticState.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Genetic</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneticAlgorithm.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Genetic</Filter>
+    </ClCompile>
+    <ClCompile Include="Population.cpp">
+      <Filter>Pliki źródłowe\Algorithms\Genetic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="ILS2.h">
       <Filter>Pliki nagłówkowe\Algorithms\Local search</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneticAlgorithm.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Genetic</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneticState.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Genetic</Filter>
+    </ClInclude>
+    <ClInclude Include="Population.h">
+      <Filter>Pliki nagłówkowe\Algorithms\Genetic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

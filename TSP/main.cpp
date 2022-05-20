@@ -23,6 +23,7 @@
 #include "MSLS.h"
 #include "ILS1.h"
 #include "ILS2.h"
+#include "GeneticAlgorithm.h"
 
 #include "DrawGraph.h"
 
@@ -301,8 +302,114 @@ void exercise3()
 		outputTime.close();
 	}
 }
+
+void exercise4()
+{
+	std::shared_ptr<TSPLoader> loader = std::make_shared<TSPLoader>();
+	std::string filenames[2] = { "kroA200.tsp", "kroB200.tsp" };
+	std::string algorithmsResults = "";
+	std::string timeResults = "";
+	std::string resultDir = "ResultsLab4/";
+
+	std::shared_ptr <AbstractAlgorithm> baseAlgorithms[] = {
+		//std::make_shared<RegretHeuristics>()
+		std::make_shared<RandomCycle>()
+	};
+
+	std::shared_ptr <MovementManager> innerMoves[] = {
+		std::make_shared <InnerEdgeSwapManager>()
+	};
+
+	std::string* result;
+	for (int i = 0; i < 2; i++)
+	{
+		auto graph = loader->loadFile("Data/" + filenames[i]);
+		std::cout << graph->getName() << std::endl;
+		algorithmsResults += graph->getName() + "\n";
+		timeResults += graph->getName() + "\n";
+
+		for (int j = 0; j < sizeof(baseAlgorithms) / sizeof(*baseAlgorithms); ++j)
+		{
+			for (int k = 0; k < sizeof(innerMoves) / sizeof(*innerMoves); ++k)
+			{
+				double max_time = 10;
+
+				/*for (auto algorithm : createAlgorithms(baseAlgorithms[j], innerMoves[k]))
+				{
+					result = testAlgorithm(graph, algorithm,
+										   loader->getLocation(), resultDir + filenames[i]);
+					algorithmsResults += result[0];
+					timeResults += result[1];
+
+					double time = std::stod(result[2]);
+					if (max_time < time)
+					{
+						max_time = time;
+					}
+
+					delete[] result;
+				}
+
+				auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new ILS1(
+					max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
+				));
+
+				result = testAlgorithm(graph, randomWalker,
+									   loader->getLocation(), resultDir + filenames[i]);
+				algorithmsResults += result[0];
+				timeResults += result[1];
+				randomWalker = std::shared_ptr <AbstractAlgorithm>(new ILS2(1,
+																			max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
+				));
+
+				result = testAlgorithm(graph, randomWalker,
+									   loader->getLocation(), resultDir + filenames[i]);
+				algorithmsResults += result[0];
+				timeResults += result[1];
+				randomWalker = std::shared_ptr <AbstractAlgorithm>(new ILS2(2,
+																			max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
+				));
+
+				result = testAlgorithm(graph, randomWalker,
+									   loader->getLocation(), resultDir + filenames[i]);
+				algorithmsResults += result[0];
+				timeResults += result[1];*/
+
+				auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new GeneticAlgorithm(1,
+																						max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
+				));
+
+				result = testAlgorithm(graph, randomWalker,
+									   loader->getLocation(), resultDir + filenames[i]);
+				algorithmsResults += result[0];
+				timeResults += result[1];
+
+				randomWalker = std::shared_ptr <AbstractAlgorithm>(new GeneticAlgorithm(2,
+																			max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
+				));
+
+				result = testAlgorithm(graph, randomWalker,
+									   loader->getLocation(), resultDir + filenames[i]);
+				algorithmsResults += result[0];
+				timeResults += result[1];
+			}
+		}
+
+
+		std::ofstream output, outputTime;
+		output.open(resultDir + "Wyniki_algorytmow.txt");
+		output << algorithmsResults;
+		output.close();
+
+		outputTime.open(resultDir + "Wyniki_czasowe.txt");
+		outputTime << timeResults;
+		outputTime.close();
+	}
+}
+
 int main() {
 	//exercise1();
 	//exercise2();
-	exercise3();
+	//exercise3();
+	exercise4();
 }

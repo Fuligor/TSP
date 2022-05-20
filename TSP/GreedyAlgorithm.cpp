@@ -96,6 +96,7 @@ void GreedyAlgorithm::calculate(int startingNode)
 				_free_nodes.push_front(i);
 			}
 		}
+		delete[] toAdd;
 	}
 	
 	while(!_free_nodes.empty()) {
