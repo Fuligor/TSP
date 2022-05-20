@@ -19,6 +19,7 @@ std::string ILS1::getName()
 
 void ILS1::calculate(int startingNode)
 {
+	int n = 15;
 	_baseAlgorithm->calculate(startingNode);
 	auto state = std::make_shared <SearchState>(_graph, _baseAlgorithm->getResult());
 	_result = state->getResult();
@@ -47,8 +48,13 @@ void ILS1::calculate(int startingNode)
 
 		auto end = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<double> duration = end - start;
+		if (_result->getLength(_graph) > state->getResult()->getLength(_graph))
+		{
+			_result = state->getResult();
+		}
 		if (duration.count() >= _workTime)
 		{
+			
 			break;
 		}
 		for (int i = 0; i < 20; i++)
@@ -58,7 +64,7 @@ void ILS1::calculate(int startingNode)
 		}
 		
 	}
-
+	
 	state->verify();
 	_result = state->getResult();
 }

@@ -48,22 +48,29 @@ void ILS2::calculate(int startingNode)
 
 	while (true)
 	{
-		auto& move = selectMove();
+		if (_version == 2)
+		{
+			while (true) {
+
+				auto& move = selectMove();
 
 		if (stopCondition(move))
 		{
-			break;
+					break;
+				}
+
+				move->makeMove();
+
+			}
 		}
-
-		move->makeMove();
-	}
-
+		
 	state->verify();
 
 	while (true)
 	{
 		auto temp = std::make_shared<Result>();
 		
+
 		std::shuffle(nodes.begin(), nodes.end(), _gen);
 
 		for (int i = 0; i < _graph->getSize() / 5; ++i)
@@ -95,7 +102,7 @@ void ILS2::calculate(int startingNode)
 
 		if (_version == 2)
 		{
-			state->update(repairAlgorithm->getResult());
+		state->update(repairAlgorithm->getResult());
 
 			while (true)
 			{
