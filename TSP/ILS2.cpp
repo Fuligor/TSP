@@ -50,12 +50,13 @@ void ILS2::calculate(int startingNode)
 	{
 		if (_version == 2)
 		{
-			while (true) {
+			while (true)
+			{
 
 				auto& move = selectMove();
 
-		if (stopCondition(move))
-		{
+				if (stopCondition(move))
+				{
 					break;
 				}
 
@@ -63,6 +64,7 @@ void ILS2::calculate(int startingNode)
 
 			}
 		}
+	}
 		
 	state->verify();
 

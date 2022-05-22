@@ -309,7 +309,7 @@ void exercise4()
 	std::string filenames[2] = { "kroA200.tsp", "kroB200.tsp" };
 	std::string algorithmsResults = "";
 	std::string timeResults = "";
-	std::string resultDir = "ResultsLab4/";
+	std::string resultDir = "ResultsLab5/";
 
 	std::shared_ptr <AbstractAlgorithm> baseAlgorithms[] = {
 		//std::make_shared<RegretHeuristics>()
@@ -332,9 +332,9 @@ void exercise4()
 		{
 			for (int k = 0; k < sizeof(innerMoves) / sizeof(*innerMoves); ++k)
 			{
-				double max_time = 10;
+				double max_time = 0;
 
-				/*for (auto algorithm : createAlgorithms(baseAlgorithms[j], innerMoves[k]))
+				for (auto algorithm : createAlgorithms(baseAlgorithms[j], innerMoves[k]))
 				{
 					result = testAlgorithm(graph, algorithm,
 										   loader->getLocation(), resultDir + filenames[i]);
@@ -350,7 +350,7 @@ void exercise4()
 					delete[] result;
 				}
 
-				auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new ILS1(
+				/*auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new ILS1(
 					max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
 				));
 

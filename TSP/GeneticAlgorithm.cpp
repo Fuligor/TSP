@@ -12,7 +12,7 @@
 
 std::string GeneticAlgorithm::getName()
 {
-    return "Genetic Algorithm";
+    return "Genetic Algorithm " + std::to_string(_version);
 }
 
 void GeneticAlgorithm::calculate(int startingNode)
