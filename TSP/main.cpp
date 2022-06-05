@@ -141,12 +141,12 @@ void exercise1()
 std::vector <std::shared_ptr <AbstractAlgorithm>> createAlgorithms(std::shared_ptr <AbstractAlgorithm> baseAlgorithm, std::shared_ptr <MovementManager> innerMove)
 {
 	return std::vector <std::shared_ptr <AbstractAlgorithm>> {
-		//std::shared_ptr <AbstractAlgorithm>(new GreedyLocalSearch(baseAlgorithm,
-		//	innerMove, std::make_shared <OuterVertexSwapManager>())),
+		std::shared_ptr <AbstractAlgorithm>(new GreedyLocalSearch(baseAlgorithm,
+			innerMove, std::make_shared <OuterVertexSwapManager>()))//,
 		//std::shared_ptr <AbstractAlgorithm>(new SteepLocalSearch(baseAlgorithm,
 			//innerMove, std::make_shared <OuterVertexSwapManager>()))
-		std::shared_ptr <AbstractAlgorithm>(new MSLS(baseAlgorithm,
-			innerMove, std::make_shared <OuterVertexSwapManager>()))
+		//std::shared_ptr <AbstractAlgorithm>(new MSLS(baseAlgorithm,
+			//innerMove, std::make_shared <OuterVertexSwapManager>()))
 	};
 }
 
@@ -375,16 +375,16 @@ void exercise4()
 				algorithmsResults += result[0];
 				timeResults += result[1];*/
 
-				auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new GeneticAlgorithm(1,
+				/*auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new GeneticAlgorithm(1,
 																						max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
 				));
 
 				result = testAlgorithm(graph, randomWalker,
 									   loader->getLocation(), resultDir + filenames[i]);
 				algorithmsResults += result[0];
-				timeResults += result[1];
+				timeResults += result[1];*/
 
-				randomWalker = std::shared_ptr <AbstractAlgorithm>(new GeneticAlgorithm(2,
+				auto randomWalker = std::shared_ptr <AbstractAlgorithm>(new GeneticAlgorithm(2,
 																			max_time, baseAlgorithms[j], innerMoves[k], std::make_shared <OuterVertexSwapManager>()
 				));
 
@@ -407,9 +407,229 @@ void exercise4()
 	}
 }
 
+int similarityVertices(std::shared_ptr <Result> cycleA, std::shared_ptr <Result> cycleB)
+{
+	int result = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		int sum[2];
+		sum[0] = 0;
+		sum[1] = 0;
+		for (int j = 0; j < 2; j++)
+		{
+			
+			for (auto k : cycleA->cycle[i])
+			{
+				for (auto p : cycleB->cycle[j])
+				{
+					if (p == k)
+					{
+						sum[j]++;
+					}
+				}
+			}
+
+		}
+		if (sum[0] > sum[1])
+		{
+			result += sum[0];
+		}
+		else
+		{
+			result += sum[1];
+		}
+	}
+	return result;
+}
+int similarityEdges(std::shared_ptr <Result> cycleA, std::shared_ptr <Result> cycleB)
+{
+	int result = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		int sum = 0;
+		for (int j = 0; j < 2; j++)
+		{
+			std::vector<int> vectorA(cycleA->cycle[i].begin(), cycleA->cycle[i].end());
+			std::vector<int> vectorB(cycleB->cycle[j].begin(), cycleB->cycle[j].end());
+
+			for (std::size_t k = 0; k < vectorA.size(); ++k) 
+			{
+
+				for (std::size_t p = 0; p < vectorB.size(); ++p)
+				{
+					if ((vectorA[k] == vectorB[p] && vectorA[(k + 1)% vectorA.size()] == vectorB[(p + 1)% vectorB.size()]) || (vectorA[k] == vectorB[(p + 1) % vectorB.size()] && vectorA[(k + 1) % vectorA.size()] == vectorB[p]))
+					{
+						sum++;
+					}
+				}
+			}
+
+		}
+		result += sum;
+	}
+	return result;
+}
+
+std::string* testAlgorithm1000(std::shared_ptr <Graph>& graph, std::shared_ptr <AbstractAlgorithm> algorithm, location* locations, std::string filename)
+{
+	algorithm->setGraph(graph);
+
+	distance min = std::numeric_limits<distance>::max();
+	int minCycle = 0;
+
+
+	std::shared_ptr <Result> *resultCycles = new std::shared_ptr <Result>[1000];
+
+	int size = 1000;
+
+	for (int i = 0; i < size; ++i)
+	{
+		std::cout << i << std::endl;
+
+		algorithm->calculate(i%200);
+
+
+		resultCycles[i] = algorithm->getResult();
+
+		distance length = resultCycles[i]->getLength(graph);
+		if (length < min)
+		{
+			min = length;
+			minCycle = i;
+		}
+	
+	}
+	double averageVertSim[1000];
+	int theBestVertSim[1000];
+	int target[1000];
+	double averageEdgSim[1000];
+	int theBestEdgSim[1000];
+	for (int k = 0; k < size; k++)
+	{
+		if (k != minCycle)
+		{
+			int bestVertSim = 0;
+			double avgVertSim = 0;
+			int bestEdgSim = 0;
+			double avgEdgSim = 0;
+			for (int p = 0; p < size; p++)
+			{
+
+				if (p != k)
+				{
+					int vertSim = similarityVertices(resultCycles[k], resultCycles[p]);
+					int edgSim = similarityEdges(resultCycles[k], resultCycles[p]);
+					avgVertSim += vertSim;
+					avgEdgSim += edgSim;
+					if (p == minCycle)
+					{
+						bestVertSim = vertSim;
+						bestEdgSim = edgSim;
+					}
+				}
+			}
+			avgVertSim = avgVertSim / (size - 1);
+			avgEdgSim = avgEdgSim / (size - 1);
+			averageVertSim[k] = avgVertSim;
+			theBestVertSim[k] = bestVertSim;
+			target[k] = resultCycles[k]->getLength(graph);
+			averageEdgSim[k] = avgEdgSim;
+			theBestEdgSim[k] = bestEdgSim;
+		}
+		
+	}
+
+	for (int j = 0; j < 2; j++)
+	{
+		std::cout << j << ": ";
+
+		for (auto k : resultCycles[minCycle]->cycle[j])
+		{
+			std::cout << k << ", ";
+		}
+
+		std::cout << std::endl;
+	}
+
+	//std::cout << algorithm->getName() << ": " << avg << "(" << min << " - " << max << ")" << std::endl;
+	//std::cout << "Time" << ": " << avgTime << "(" << minTime << " - " << maxTime << ")" << std::endl;
+	std::string avgVertSimString = "AverageVerticesSim = [";
+	std::string bestVertSimString = "BestVerticesSim = [";
+	std::string targetString = "Target = [";
+	std::string avgEdgSimString = "AverageEdgesSim = [";
+	std::string bestEdgSimString = "BestEdgesSim = [";
+	for (int  i= 0; i < size; i++)
+	{
+		if (i != minCycle)
+		{
+			avgVertSimString += std::to_string(averageVertSim[i]) + ",";
+			bestVertSimString += std::to_string(theBestVertSim[i]) + ",";
+			targetString += std::to_string(target[i]) + ",";
+			avgEdgSimString += std::to_string(averageEdgSim[i]) + ",";
+			bestEdgSimString += std::to_string(theBestEdgSim[i]) + ",";
+		}
+		if (i == size - 1)
+		{
+			avgVertSimString.pop_back();
+			bestVertSimString.pop_back();
+			targetString.pop_back();
+			avgEdgSimString.pop_back();
+			bestEdgSimString.pop_back();
+
+			avgVertSimString += "]";
+			bestVertSimString += "]";
+			targetString += "]";
+			avgEdgSimString += "]";
+			bestEdgSimString += "]";
+		}
+	}
+
+	std::string* result = new std::string[5]{targetString, avgVertSimString, bestVertSimString, avgEdgSimString, bestEdgSimString };
+
+	return result;
+}
+void exercise6()
+{
+	std::shared_ptr<TSPLoader> loader = std::make_shared<TSPLoader>();
+	std::string filenames[2] = { "kroA200.tsp", "kroB200.tsp" };
+	std::string algorithmsResults = "";
+
+	std::string resultDir = "ResultsLab6/";
+
+	std::shared_ptr <AbstractAlgorithm> baseAlgorithms[] = {
+		std::make_shared<RandomCycle>()
+	};
+
+	std::shared_ptr <MovementManager> innerMoves[] = {
+		std::make_shared <InnerEdgeSwapManager>()
+	};
+
+	std::string* result;
+	for (int i = 0; i < 2; i++)
+	{
+		auto graph = loader->loadFile("Data/" + filenames[i]);
+		std::cout << graph->getName() << std::endl;
+		algorithmsResults += graph->getName() + "\n";
+		
+		auto randomWalker = std::shared_ptr <AbstractAlgorithm>(createAlgorithms(baseAlgorithms[0], innerMoves[0])[0]);
+
+		result = testAlgorithm1000(graph, randomWalker,
+			loader->getLocation(), resultDir + filenames[i]);
+		algorithmsResults += result[0] +"\n" + result[1] + "\n" + result[2] + "\n" + result[3] + "\n" + result[4] + "\n";
+
+
+
+	}
+		std::ofstream output, outputTime;
+		output.open(resultDir + "Wyniki_algorytmow.txt");
+		output << algorithmsResults;
+		output.close();
+
+}
+
 int main() {
 	//exercise1();
 	//exercise2();
 	//exercise3();
-	exercise4();
+	exercise6();
 }
