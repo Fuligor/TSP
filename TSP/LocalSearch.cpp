@@ -29,7 +29,7 @@ std::string LocalSearch::getName()
 
 void LocalSearch::calculate(int startingNode)
 {
-	int n = 15;
+	int n = 30;
 	_baseAlgorithm->calculate(startingNode);
 	auto state = std::make_shared <SearchState>(_graph, _baseAlgorithm->getResult(), n);
 
