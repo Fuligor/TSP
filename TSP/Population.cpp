@@ -9,11 +9,11 @@ Population::Population(std::shared_ptr<Graph> graph, size_t population_size)
 {
 }
 
-void Population::add(std::shared_ptr<GeneticState> state)
+bool Population::add(std::shared_ptr<GeneticState> state)
 {
 	if(_unique.find(state->getLength(_graph)) != _unique.end())
 	{
-		return;
+		return false;
 	}
 
 	if (_vector.size() >= _population_size)
@@ -22,7 +22,7 @@ void Population::add(std::shared_ptr<GeneticState> state)
 
 		if(state->getLength(_graph) >= top.first)
 		{
-			return;
+			return false;
 		}
 
 		_queue.pop();
@@ -38,6 +38,8 @@ void Population::add(std::shared_ptr<GeneticState> state)
 	}
 	
 	_unique.insert(state->getLength(_graph));
+
+	return true;
 }
 
 std::shared_ptr<Result> Population::getBest()

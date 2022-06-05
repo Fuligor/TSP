@@ -29,6 +29,11 @@ std::pair<distance, std::forward_list<int>::iterator> GreedyCycle::calculateCost
 	return std::pair <distance, std::forward_list<int>::iterator>(minCost, positionInCycle);
 }
 
+GreedyCycle::GreedyCycle(size_t candidates_count)
+	:GreedyAlgorithm(candidates_count)
+{
+}
+
 std::string GreedyCycle::getName()
 {
     return "Greedy Cycle";

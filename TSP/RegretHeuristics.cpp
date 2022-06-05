@@ -38,6 +38,11 @@ std::pair<distance, std::forward_list<int>::iterator> RegretHeuristics::calculat
 	return std::pair <distance, std::forward_list<int>::iterator>(cost, positionInCycle);
 }
 
+RegretHeuristics::RegretHeuristics(size_t candidates_count)
+	:GreedyAlgorithm(candidates_count)
+{
+}
+
 std::string RegretHeuristics::getName()
 {
     return "Regret Heuristics";

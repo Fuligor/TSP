@@ -13,6 +13,7 @@ protected:
 public:
 	virtual std::string getName() = 0;
 	void setResult(std::shared_ptr <Result> result);
+	virtual void reset();
 	virtual void setGraph(std::shared_ptr <Graph> graph);
 	virtual void calculate(int startingNode) = 0;
 	virtual std::shared_ptr <Result> getResult();

@@ -6,6 +6,7 @@
 
 #include "GeneticState.h"
 #include "GreedyCycle.h"
+#include "RegretHeuristics.h"
 #include "Move.h"
 #include "Population.h"
 #include "SearchState.h"
@@ -20,10 +21,12 @@ void GeneticAlgorithm::calculate(int startingNode)
 	std::mt19937_64 gen(startingNode);
 	std::vector <int> nodes;
 	std::shared_ptr <Result> result;
-	auto repairAlgorithm = std::shared_ptr <AbstractAlgorithm>(new GreedyCycle);
+	auto repairAlgorithm = std::shared_ptr <GreedyAlgorithm>(new RegretHeuristics());
 	repairAlgorithm->setGraph(_graph);
 	size_t population_size = 20;
 	Population population(_graph, population_size); 
+	int is_static = 0;
+	int mutation_prob = 5;
 
 	auto start = std::chrono::high_resolution_clock::now();
 
@@ -53,6 +56,15 @@ void GeneticAlgorithm::calculate(int startingNode)
 		auto child = GeneticState::crossover(parents.first, parents.second);
 		std::shared_ptr <GeneticState> childState;
 
+		if (gen() % 100 < mutation_prob)
+		{
+			repairAlgorithm->setCandidates(20);
+		}
+		else
+		{
+			repairAlgorithm->setCandidates();
+		}
+		
 		repairAlgorithm->setResult(child);
 		repairAlgorithm->calculate(startingNode);
 
@@ -79,7 +91,27 @@ void GeneticAlgorithm::calculate(int startingNode)
 			childState = std::make_shared <GeneticState>(repairAlgorithm->getResult());
 		}
 
-		population.add(childState);
+		if (population.add(childState))
+		{
+			is_static++;
+		}
+		else
+		{
+			is_static = 0;
+		}
+
+		if (is_static < 5)
+		{
+			mutation_prob = 5;
+		}
+		else if (is_static > 100)
+		{
+			mutation_prob = 100;
+		}
+		else
+		{
+			mutation_prob = is_static;
+		}
 
 		auto end = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<double> duration = end - start;

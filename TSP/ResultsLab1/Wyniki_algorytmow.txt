@@ -1,4 +1,4 @@
-kroA200
-Regret Heuristics: 37162.780000(33457 - 40314)
-kroB200
-Regret Heuristics: 36763.770000(33082 - 38485)
+kroA100
+Regret Heuristics: 26443.900000(23791 - 27536)
+kroB100
+Regret Heuristics: 27828.900000(26170 - 28619)

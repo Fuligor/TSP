@@ -1,2 +1,4 @@
 kroA200
-MSLS : 35874.600000(35635 - 36185)
+Regret Heuristics: 35409.000000(35409 - 35409)
+kroB200
+Regret Heuristics: 35384.000000(35384 - 35384)

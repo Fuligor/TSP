@@ -1,8 +1,8 @@
 kroA200
-MSLS  Time: 9.938224(9.789506 - 10.376286)
-Genetic Algorithm 1 Time: 9.938435(9.938406 - 9.938605)
-Genetic Algorithm 2 Time: 9.939046(9.938603 - 9.939593)
+MSLS  Time: 2.918788(2.687108 - 3.594899)
+Genetic Algorithm 1 Time: 2.919113(2.919007 - 2.919511)
+Genetic Algorithm 2 Time: 2.920338(2.919157 - 2.924540)
 kroB200
-MSLS  Time: 9.587062(9.540028 - 9.640894)
-Genetic Algorithm 1 Time: 9.587248(9.587234 - 9.587263)
-Genetic Algorithm 2 Time: 9.587748(9.587519 - 9.588200)
+MSLS  Time: 2.784735(2.574427 - 3.263373)
+Genetic Algorithm 1 Time: 2.785207(2.785011 - 2.785618)
+Genetic Algorithm 2 Time: 2.786991(2.785000 - 2.791820)

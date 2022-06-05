@@ -1,2 +1,4 @@
 kroA200
-MSLS  Time: 60.530225(59.958690 - 61.656601)
+Regret Heuristics Time: 0.000388(0.000004 - 0.003844)
+kroB200
+Regret Heuristics Time: 0.000408(0.000004 - 0.004030)

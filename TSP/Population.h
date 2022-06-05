@@ -29,7 +29,7 @@ protected:
 public:
 	Population(std::shared_ptr <Graph> graph, size_t population_size);
 
-	void add(std::shared_ptr <GeneticState> state);
+	bool add(std::shared_ptr <GeneticState> state);
 	std::shared_ptr <Result> getBest();
 
 	typedef std::pair<std::shared_ptr <GeneticState>, std::shared_ptr<GeneticState>> parents;

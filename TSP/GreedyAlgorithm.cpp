@@ -2,7 +2,21 @@
 
 #include "Result.h"
 
+#include <algorithm>
 #include <iostream>
+#include <vector>
+
+struct InsertCandidate
+{
+	distance cost;
+	std::forward_list<int>::iterator position;
+	int node;
+};
+
+bool operator < (const InsertCandidate& a, const InsertCandidate& b)
+{
+	return a.cost < b.cost;
+}
 
 int GreedyAlgorithm::getStartingNodes(int startingNode)
 {
@@ -26,22 +40,35 @@ int GreedyAlgorithm::getStartingNodes(int startingNode)
 void GreedyAlgorithm::addBestNodeToCycle(int cycle)
 {
 	distance minCost = std::numeric_limits<distance>::max();
-	int bestNode = -1;
-	std::forward_list<int>::iterator positionInCycle = _result->cycle[cycle].before_begin();
+	std::vector <InsertCandidate> candidates;
 
 	for (auto i : _free_nodes)
 	{
 		auto temp = calculateCostToCycle(i, cycle);
 
-		if (temp.first <= minCost)
-		{
-			minCost = temp.first;
-			positionInCycle = temp.second;
-			bestNode = i;
+		if (candidates.size() >= _candidates_count) {
+			if (temp.first < candidates.front().cost) {
+				std::pop_heap(candidates.begin(), candidates.end());
+				candidates.pop_back();
+			}
+			else {
+				continue;
+			}
 		}
+
+		candidates.push_back({
+				temp.first,
+				temp.second,
+				i
+			});
+		std::push_heap(candidates.begin(), candidates.end());
 	}
 
-	addToCycle(bestNode, cycle, positionInCycle);
+	int index = _gen() % candidates.size();
+
+	InsertCandidate choosenCandidate = candidates[index];
+
+	addToCycle(choosenCandidate.node, cycle, choosenCandidate.position);
 }
 
 void GreedyAlgorithm::addToCycle(int node, int cycle)
@@ -68,8 +95,20 @@ void GreedyAlgorithm::initCalculations(int startingNode)
 	addToCycle(getStartingNodes(startingNode), 1);
 }
 
+GreedyAlgorithm::GreedyAlgorithm(size_t candidates_count)
+	:_candidates_count(candidates_count)
+{
+}
+
+void GreedyAlgorithm::setCandidates(size_t candidates_count)
+{
+	_candidates_count = candidates_count;
+}
+
 void GreedyAlgorithm::calculate(int startingNode)
 {
+	_gen.seed(startingNode);
+
 	if (_result == nullptr)
 	{
 		initCalculations(startingNode);

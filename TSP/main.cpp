@@ -42,6 +42,7 @@ std::string* testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <Abst
 
 	for (int i = 0; i < 10; ++i)
 	{
+		algorithm->reset();
 		std::cout << i << std::endl;
 		auto start = std::chrono::steady_clock::now();
 		algorithm->calculate(i);
@@ -102,12 +103,12 @@ std::string* testAlgorithm(std::shared_ptr <Graph>& graph, std::shared_ptr <Abst
 void exercise1()
 {
 	std::shared_ptr<TSPLoader> loader = std::make_shared<TSPLoader>();
-	std::string filenames[2] = { "kroA200.tsp", "kroB200.tsp" };
+	std::string filenames[2] = { "kroA100.tsp", "kroB100.tsp" };
 	std::string algorithmsResults = "";
 	std::string* result;
 	std::string timeResults = "";
 
-	std::string resultDir = "ResultsLab3/";
+	std::string resultDir = "ResultsLab1/";
 	for (int i = 0; i < 2; i++)
 	{
 		auto graph = loader->loadFile("Data/" + filenames[i]);
@@ -227,8 +228,8 @@ void exercise3()
 	std::string resultDir = "ResultsLab4/";
 
 	std::shared_ptr <AbstractAlgorithm> baseAlgorithms[] = {
-		//std::make_shared<RegretHeuristics>()
-		std::make_shared<RandomCycle>()
+		std::make_shared<RegretHeuristics>(10)
+		//std::make_shared<RandomCycle>()
 	};
 
 	std::shared_ptr <MovementManager> innerMoves[] = {
@@ -291,7 +292,6 @@ void exercise3()
 			}
 		}
 
-
 		std::ofstream output, outputTime;
 		output.open(resultDir + "Wyniki_algorytmow.txt");
 		output << algorithmsResults;
@@ -312,8 +312,8 @@ void exercise4()
 	std::string resultDir = "ResultsLab5/";
 
 	std::shared_ptr <AbstractAlgorithm> baseAlgorithms[] = {
-		//std::make_shared<RegretHeuristics>()
-		std::make_shared<RandomCycle>()
+		std::make_shared<RegretHeuristics>(10)
+		//std::make_shared<RandomCycle>()
 	};
 
 	std::shared_ptr <MovementManager> innerMoves[] = {
